@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 var dburl = 'mongodb://localhost:27017/meanHotel';
 
 mongoose.connect(dburl);
@@ -37,4 +38,4 @@ process.once('SIGUSR2', function () {
 });
 
 //BRING IN SCHEMA
-require('hotels.model.js');
+require('./hotels.model.js');
