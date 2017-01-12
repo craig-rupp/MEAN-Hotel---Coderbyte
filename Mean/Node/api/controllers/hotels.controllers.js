@@ -24,9 +24,16 @@ var runGeoQuery = function(request, response){
 		.geoNear(point, geoOptions, function(error, results, stats){
 			console.log("Geo results: " + results);
 			console.log("Geo stats: " + stats);
-			response	
-				.status(200)
-				.json(results); //return results array in response object
+			if(error){
+				console.log("Error finding hotels");
+				response
+					.status(500)
+					.json(error);
+			} else {
+				response	
+					.status(200)
+					.json(results); //return results array in response object
+			}
 		});
 
 };
@@ -40,6 +47,7 @@ module.exports.hotelsGetAll = function(request, response){
 	//default pagination
 	var offset = 0;
 	var count = 5;
+	var maxCount = 15;
 
 	//geoquery request check
 	if(request.query && request.query.lat && request.query.lng){
@@ -55,28 +63,68 @@ module.exports.hotelsGetAll = function(request, response){
 	if(request.query && request.query.count){
 		count = parseInt(request.query.count, 10);
 	}
+	//catch offset || count if either is not a number
+	if(isNaN(offset) || isNaN(count)){
+		response
+			.status(400)
+			.json({
+				message : "Please provide numbers either in count or offfset"
+			});
+		return;
+	}
+
+	if(count > maxCount){
+		response
+			.status(400)
+			.json({
+				message : "Count limit of " + maxCount + " has been exceeded"
+			});
+		return;
+	}
 
 	Hotel
 		.find()
 		.skip(offset)
 	 	.limit(count)
 		.exec(function(err, hotels){
+			if(err){
+				console.log('Error finding hotels');
+				response
+					.status(500)
+					.json(err);
+			} else {
 			console.log('Found Hotels', hotels.length);
 			response
 				.json(hotels);
+			}
 		});
 };
 
-module.exports.hotelsGetOne  = function(request, response){
-	var hotelId = request.params.hotelId;
-	//var thisHotel = hotelData[hotelId]; used for the hard coded json data worked on earlier
+module.exports.hotelsGetOne = function(req, res) {
+	var hotelId = req.params.hotelId;
+	console.log("Get hotelId ", hotelId);
+	//chain methods onto Model
 	Hotel
 		.findById(hotelId)
-		.exec(function(error, docs){
-		console.log("GET hotelId", hotelId);
-		response
-			.status(200)
-			.json(docs);
+		.exec(function(err, doc){
+			var response = {
+				status : 200,
+				message : doc
+			};
+			if(err){
+				console.log("Error finding hotel");
+				response.status = 500;
+				response.message = err;
+			}else if (!doc){
+				console.log("Hotel ID not found");
+				response.status = 500;
+				response.message = {
+					"message" : "Hotel ID not found"
+				};
+			}
+			res
+				.status(response.status)
+				.json(response.message);
 		});
 };
 
