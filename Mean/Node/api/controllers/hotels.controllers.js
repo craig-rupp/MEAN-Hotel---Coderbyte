@@ -127,31 +127,73 @@ module.exports.hotelsGetOne = function(req, res) {
 				.json(response.message);
 		});
 };
-
-module.exports.hotelsAddOne = function(req, res){
-	var db = dbConn.get();
-	//use the collection Hotels from the database
-	var collection = db.collection('Hotels');
-	var newHotel;
-	console.log("POST new hotel");
-	//body parser middleware outputs the data from the post it form
-
-	if(req.body && req.body.name && req.body.stars){
-		newHotel = req.body;
-		newHotel.stars = parseInt(req.body.stars, 10);
-		collection.insertOne(newHotel, function(error, response){
-			console.log(response);
-			console.log(response.ops);
-			res	
-				.status(201)
-				.json(response.ops); 
-		});
+var _splitArray = function(input){
+	var output;
+	if(input && input.length > 0){
+		output = input.split(";");
 	} else {
-		console.log("Data missing from body");
-		res	
-			.status(400)
-			.json({message : "Required data missing from body" });
+		output = [];
 	}
+	return output;
 };
+
+module.exports.hotelsAddOne = function (req, res) {
+
+	Hotel
+		.create({
+			name : req.body.name,
+			description : req.body.description,
+			stars : parseInt(req.body.stars, 10),
+			services : _splitArray(req.body.services),
+			photos : _splitArray(req.body.photos),
+			currency : req.body.currency,
+			location : {
+				address : req.body.address,
+				coordinates : [
+					parseFloat(req.body.lng), 
+					parseFloat(req.body.lat)
+				]
+			}
+		}, function(error, hotel){
+			if(error){
+				console.log("Error creating hotel");
+				res 
+					.status(400)
+					.json(error);
+			} else {
+				console.log("Hotel created " + hotel);
+				res 
+					.status(201)
+					.json(hotel);
+			}
+		});
+
+};
+//native driver code
+// module.exports.hotelsAddOne = function(req, res){
+// 	var db = dbConn.get();
+// 	//use the collection Hotels from the database
+// 	var collection = db.collection('Hotels');
+// 	var newHotel;
+// 	console.log("POST new hotel");
+// 	//body parser middleware outputs the data from the post it form
+
+// 	if(req.body && req.body.name && req.body.stars){
+// 		newHotel = req.body;
+// 		newHotel.stars = parseInt(req.body.stars, 10);
+// 		collection.insertOne(newHotel, function(error, response){
+// 			console.log(response);
+// 			console.log(response.ops);
+// 			res	
+// 				.status(201)
+// 				.json(response.ops); 
+// 		});
+// 	} else {
+// 		console.log("Data missing from body");
+// 		res	
+// 			.status(400)
+// 			.json({message : "Required data missing from body" });
+// 	}
+// };
 
 
