@@ -12,18 +12,8 @@ router
 router
 .route('/hotels/:hotelId')
 .get(ctrlHotels.hotelsGetOne)
-.put(ctrlHotels.hotelsUpdateOne);
-
-// router
-// .route('/hotels/new')
-// .post(ctrlHotels.hotelsAddOne);
-// .post(function(request, response){
-// 	console.log("POST the JSON");
-// 	response
-// 		.status(200)
-// 		.json( {"jsonData" : "POST received"} );
-// });
-
+.put(ctrlHotels.hotelsUpdateOne)
+.delete(ctrlHotels.hotelsDeleteOne);
 //Review Routes
 router
 .route('/hotels/:hotelId/reviews')
@@ -33,6 +23,7 @@ router
 router
 .route('/hotels/:hotelId/reviews/:reviewId')
 .get(ctrlReviews.reviewsGetOne)
-.put(ctrlReviews.reviewsUpdateOne);
+.put(ctrlReviews.reviewsUpdateOne)
+.delete(ctrlReviews.reviewsDeleteOne);
 
 module.exports = router;

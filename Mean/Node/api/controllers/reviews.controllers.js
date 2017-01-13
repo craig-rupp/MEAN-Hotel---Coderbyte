@@ -187,6 +187,58 @@ module.exports.reviewsUpdateOne = function (req, res) {
 		});
 };
 
+module.exports.reviewsDeleteOne = function (req, res) {
+
+	var hotelId = req.params.hotelId;
+	var reviewId = req.params.reviewId;
+	//chain on model
+	Hotel
+		.findById(hotelId)
+		.select('reviews') //select property of object we wants 
+		.exec(function(err, disHotel){
+			var updateReviewId;
+			var response = {
+				status : 200,
+				message : {}
+			};	
+			if(err) {
+				response.status = 500;
+				response.message = err; //err is the object 
+			} else if (!disHotel) {
+				response.status = 404;
+				response.message = {
+					"message" : "Hotel not found with id : " + hotelId
+				};
+			} else {
+				//get review (need more than the ID duh)
+				updateReviewId = disHotel.reviews.id(reviewId);
+				if(!updateReviewId){
+					response.status = 400;
+					response.message = {
+						"message" : "Review ID: " + reviewId + " does not exist" 
+					};
+				}
+			}
+			if(response.status !== 200) {
+				res
+					.status(response.status)
+					.json(response.message);
+			}
+				disHotel.reviews.id(reviewId).remove();
+				disHotel.save(function(err, hotelUpdated){
+					if(err){
+						res 
+							.status(500)
+							.json(err);
+					} else {
+						res 
+							.status(204)
+							.json();
+					}
+				});
+		});
+
+};
 
 
 
