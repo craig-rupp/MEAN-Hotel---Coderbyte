@@ -169,6 +169,63 @@ module.exports.hotelsAddOne = function (req, res) {
 		});
 
 };
+
+module.exports.hotelsUpdateOne = function(req, res) {
+	var hotelId = req.params.hotelId;
+	console.log("Get hotelId ", hotelId);
+	//chain methods onto Model
+	Hotel
+		.findById(hotelId)
+		.select("-reviews -rooms")//just come back with fields we want to update
+		.exec(function(err, doc){
+			var response = {
+				status : 200,
+				message : doc
+			};
+			if(err){
+				console.log("Error finding hotel");
+				response.status = 500;
+				response.message = err;
+			}else if (!doc){
+				console.log("Hotel ID not found");
+				response.status = 500;
+				response.message = {
+					"message" : "Hotel ID not found"
+				};
+			}
+			if(response.status !== 200){
+				res
+					.status(response.status)
+					.json(response.message);
+			} else {
+				doc.name = req.body.name;
+				doc.description = req.body.description;
+				doc.stars = parseInt(req.body.stars, 10);
+				doc.services = _splitArray(req.body.services);
+				doc.photos = _splitArray(req.body.photos);
+				doc.currency = req.body.currency;
+				doc.location = {
+					address : req.body.address,
+					coordinates : [
+						parseFloat(req.body.lng), 
+						parseFloat(req.body.lat)
+					]
+				};
+
+				doc.save(function(error, updatedHotel){
+					if(error) {
+						res 
+							.status(500)
+							.json(error);
+					} else {
+						res 
+							.status(204)
+							.json();
+					}
+				});
+			}
+		});
+};
 //native driver code
 // module.exports.hotelsAddOne = function(req, res){
 // 	var db = dbConn.get();

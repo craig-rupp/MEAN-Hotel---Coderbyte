@@ -129,6 +129,63 @@ module.exports.reviewsAddOne = function(req, res) {
 		});
 };
 
+module.exports.reviewsUpdateOne = function (req, res) {
+	var hotelId = req.params.hotelId;
+	var reviewId = req.params.reviewId;
+	console.log("Put review ID " + reviewId + ' for hotel ' + hotelId);
+
+	Hotel 
+		.findById(hotelId)
+		.select('reviews')
+		.exec(function(err, hotel){
+			var updateReview;
+			var response = {
+				status : 200,
+				message : {}
+			};
+			if(err){
+				console.log("Error finding hotel");
+				response.status = 500;
+				response.message = err; //message would be error object
+			} else if (!hotel) {
+				console.log("Hotel id not found in database");
+				response.status = 404;
+				response.message = {
+					"message" : "hotel ID not found " + hotelId
+				};
+			} else {
+				//get the review
+				updateReview = hotel.reviews.id(reviewId);
+				//check to see if review even exists
+				if(!updateReview) {
+					response.status = 404;
+					response.message = {
+						"message" : "Review ID not found " + reviewId
+					};
+				}
+			}
+			if(response.status !== 200) {
+				res 
+					.status(response.status)
+					.json(response.message);
+			} else {
+				updateReview.name = req.body.name;
+				updateReview.stars = parseInt(req.body.stars);
+				updateReview.review = req.body.review;
+				hotel.save(function(err, hotelUpdated){
+					if(err){
+						res 
+							.status(500)
+							.json(err);
+					} else {
+						res 
+							.status(204)
+							.json();
+					}
+				});
+			}
+		});
+};
 
 
 
