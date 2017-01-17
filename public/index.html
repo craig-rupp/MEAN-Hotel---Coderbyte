@@ -1,22 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="meanhotel">
 <head>
 	<title>MEAN Hotel</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
 </head>
 <body>
-	<h1>Welcome to MEAN Hotel</h1>
-
-	<footer class="footer">
-		<a href="http:craigrupp11.me" target="_blank">
-		<img src="images/sample_footer.JPG"></a>
-	</footer>
-
+	<!-- <h1>Welcome to MEAN Hotel</h1> -->
+	
+	<div ng-view></div>
 
 	<script
   	src="https://code.jquery.com/jquery-2.2.4.min.js"
   	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   	crossorigin="anonymous"></script>
+  	<script src="node_modules/angular/angular.js"></script>
+  	<script src="node_modules/angular-route/angular-route.js"></script>
+  	 <script src="angular-app/app-angular.js"></script>
 </body>
 </html> 

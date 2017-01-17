@@ -240,7 +240,7 @@ module.exports.hotelsDeleteOne = function (req, res) {
 			console.log("Hotel succesfully delted : " + hotelId);
 				res
 					.status(204)
-					.json();
+					.json();3
 		});
 };
 
