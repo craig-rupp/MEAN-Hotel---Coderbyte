@@ -23,6 +23,8 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 //urlencoded takes array/string (types) and will allow the npm extension to post
 app.use(bodyParser.urlencoded({extended : false}));
+//data that angular is sending
+app.use(bodyParser.json());
 
 app.use('/api', routes);
 
