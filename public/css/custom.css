@@ -3,10 +3,9 @@
 html {
 	position: absolute;
 }
-/*body {
-	background-color : papayawhip;
-	margin-bottom: 90px;
-}*/
+body {
+	padding:20px;
+}
 .padded {
 	padding-top: 30px;
 }

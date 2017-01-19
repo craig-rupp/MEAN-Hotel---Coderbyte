@@ -43,6 +43,7 @@ module.exports.hotelsGetAll = function(request, response){
 	//var db = dbConn.get();
 	//use the collection Hotels from the database
 	//var collection = db.collection('Hotels');
+	console.log("Requested by " + request.user); //now we can see which user requested this method, property created when user log's in in users controller
 
 	//default pagination
 	var offset = 0;
