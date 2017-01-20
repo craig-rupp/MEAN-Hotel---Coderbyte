@@ -8,11 +8,4 @@ function HotelsController(hotelDataFactory) {
     vm.hotels = response.data;
   });
 }
-// function HotelsController($http) {
-// 	var vm = this;
-// 	vm.title = 'MEAN Hotel app'; 
-// 	$http.get('/api/hotels').then(function(response){
-// 		vm.hotels = response.data;
-// 		console.log(vm.hotels);
-// 	});
-// }
+

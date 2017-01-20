@@ -3,21 +3,10 @@
 html {
 	position: absolute;
 }
-body {
+/*body {
 	padding:20px;
-}
-.padded {
-	padding-top: 30px;
-}
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/*set fixed height of footer here */
-	height: 90px;
-	padding-top: 75px;
-}
+}*/
+body > .container {
+    padding-top: 60px;
+  }
 
-/*comment that nodemon should ignore */
-/*comment that nodemon should ignore */
-/*comment that nodemon should ignore */
