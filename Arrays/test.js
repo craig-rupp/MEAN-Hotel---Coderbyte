@@ -110,5 +110,31 @@ let newNumbersMap =
  var sum = newNumbers.reduce((a, b) => a + b, 0);
  console.log(sum);
 
+ let sortArray = [1, 2, 15, 7, 19, 35, 6, 4, 24];
+ //console.log(sortArray.sort());
+ let actualSortedArray = sortArray.sort((a, b) => { return (a > b ? -1 : 1); }); //ascending order
+ console.log(actualSortedArray);
+ let anotherSortedArray = sortArray.sort((a, b) => { return (a < b ? -1 : 1); }); //descending order
+ console.log(anotherSortedArray);
+
+ function squareArrayIndexes(array){
+ 	console.log(array);
+ 	console.log("Array for indexes to double");
+ 	var squaredArray = array.map(n => n * n);
+ 	console.log(squaredArray);
+ 	return squaredArray;
+ }
+ squareArrayIndexes(sortArray);
+
+
+var middleStarks = ['Bran', 'Moon Boy - Robin Arryn', 'Sansa'];
+var robbyCatelyn = ['Robb', 'Catelyn'];
+let Starks = ['Rickon', 'Arya', ...middleStarks, 'Jon(ish - Targaryen)', ...robbyCatelyn, 'Eddard'];
+console.log(Starks);
+
+
+
+
+
 
 
