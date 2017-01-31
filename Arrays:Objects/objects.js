@@ -55,5 +55,62 @@ function mapTheObjects(arrayOfObjects) {
     return nameLength;
 }
 
+function maptheObjectsDeux(arryofObjs){
+	var finalObj = [];
+	var newObj = arryofObjs.map(function(el){
+		var object = {
+			name : el.name,
+			length : el.name.length
+		};
+		//console.log(object);
+		finalObj.push(object);
+	});
+	console.log(finalObj);
+	return finalObj;
+}
+
 mapTheObjects(objNamesLength);
+maptheObjectsDeux(objNamesLength);
+
+
+//freeze & seal 
+var sealObject = {a : 3, b : 5, c : 7};
+var freezeObject = {a: 7, b: 15, c : 14};
+
+function freezeNSeal(freezeObj, sealObj){
+	Object.freeze(freezeObj);
+	Object.seal(sealObj);
+	console.log(freezeObj, sealObj);
+	return {
+		freezedObject : freezeObj,
+		sealedObject : sealObj
+	};
+}
+freezeNSeal(freezeObject, sealObject);
+
+//modify method to return a reference to the object
+var obj = {
+    method:function(){
+       console.log(this);
+    }
+};
+obj.method();
+
+var iPhone = {};
+var message = {
+	beep : function () {
+		console.log("call me beep me if you wanna reach me");
+	}
+};
+var iPad = {
+	versions : function(){
+	console.log([1, 2, 3, 4, 5])
+	} 
+};
+
+iPhone.kimPossible = message.beep.bind(iPhone);
+iPhone.bigBrother = iPad.versions.bind(iPhone);
+console.log(iPhone);
+
+
 
