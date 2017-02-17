@@ -113,4 +113,65 @@ function simpleAdding(number) {
 
 simpleAdding(4);
 
+//capitalize each letter at start or after space (this is that == This Is That)
+var testing = "this is that";
+function letterCapitalize(str) {
+	var letterArray = str.split(" ");
+	console.log(letterArray);
+	for(var i = 0; i < letterArray.length; i++){
+		//console.log(letterArray[i].charAt(1));
+		console.log(letterArray[i].slice(1));
+		letterArray[i] = letterArray[i].charAt(0).toUpperCase() + letterArray[i].slice(1);
+	}
+	console.log(letterArray);
+}
+
+letterCapitalize(testing);
+
+var symbols = "+D+===+s+";
+var symbols_two = "+D+===+s+r";
+function simpleSymbols(sym) {
+	var sym_array = sym.toLowerCase().split("");
+	for(var i = 0; i < sym_array.length; i++){
+		if(sym_array[0] >= 'a' && sym_array[0] <= 'z' || sym_array[sym_array.length - 1] >= 'a' && sym_array[sym-array.length - 1] <= 'z'){
+			return false;
+		}
+		else if(sym_array[i] >= 'a' && sym_array[i] <= 'z' && sym_array[i - 1] !== '+' && sym_array[i + 1] !== '+'){
+			return false;
+		}
+	}
+	console.log(true); 
+}
+
+simpleSymbols(symbols);
+//simpleSymbols(symbols_two);
+
+// if(sym_array[i] == '+' && sym_array[i + 1] >= 'a' && sym_array[i + 1] <= 'z' && sym_array[i + 2] == '+'){
+// 	console.log(true);
+// }
+
+function moreSimpleSymbols(symb) {
+	var symb_array = symb.toLowerCase().split("");
+	for(var i = 0; i < symb_array.length; i++){
+		if(symb_array[i] >= 'a' && symb_array[i] <= 'z'){
+			if(i === 0 || i === symb_arr.length - 1){
+				return false;
+			}
+			if(symb_array[i - 1] !== '+' && symb_array[i + 1] !== '+'){
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+
+
+
+
+
+
+
+
+
 
