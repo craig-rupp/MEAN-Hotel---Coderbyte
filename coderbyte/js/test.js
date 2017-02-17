@@ -165,7 +165,7 @@ function moreSimpleSymbols(symb) {
 	return true;
 }
 
-//Friday 2/17 first coderbyte challenge
+//Friday 2/17 
 function CheckNums(num1,num2) { 
     if(num2 > num1){
         return true;
@@ -176,8 +176,59 @@ function CheckNums(num1,num2) {
     }
 }
 
+//Friday 2/17 
+function TimeConvert(num) { 
+    var hours = Math.floor(num/60);
+    var minutes = num % 60;
+    return hours + ":" + minutes;
+}
+   
+// keep this function call here 
+//TimeConvert(readline());
 
+//Alphabet Soup
+var alpha = "craig rupp";
+function alphaBet(string){
+	var res = [];
+	for (var i = 0; i < string.length; i++){
+		res.push(string[i]);
+	}
+	res.sort();
+	console.log(res.join(" "));
+}
 
+alphaBet(alpha);
+
+var Danny = "Welbeck";
+function AlphabetSoup(str) { 
+  var array = str.split("");
+  for(var i = 0; i < array.length; i++) {
+    for(var j = 0; j < array.length; j++) {
+      if(array[i] < array[j]) {
+        var dummy = array[i];
+        array[i] = array[j];
+        array[j] = dummy;
+      }
+    }
+  }
+  var newStr = array.join(""); 
+  console.log(newStr); 
+         
+}
+   
+
+AlphabetSoup(Danny);
+
+function VowelCount(str) { 
+    var str_arr = str.toLowerCase().split("");
+    var count = 0;
+    for(var i = 0; i < str_arr.length; i++){
+        if(str_arr[i] === 'a' || str_arr[i] === 'e' || str_arr[i] === 'i' || str_arr[i] === 'o' || str_arr[i] === 'u'){
+            count += 1;
+        }
+    }
+    return count;
+}
 
 
 
