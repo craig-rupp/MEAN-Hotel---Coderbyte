@@ -24,4 +24,87 @@ function WordCount(str) {
 }
    
 // keep this function call here 
-WordCount(readline());
+//WordCount(readline());
+
+var first = "xooxxo";
+var second = "xoo";
+function ExOh(str) { 
+    var new_str = str.toLowerCase().split("");
+    var first_check = [];
+    var second_check = [];
+    for(var i = 0; i < new_str.length; i++){
+        if(new_str[i] === 'x'){
+            first_check.push(new_str[i]);
+        } else {
+            second_check.push(new_str[i]);
+        }    
+    }
+    if(first_check.length === second_check.length){
+        return true;
+    }
+        return false;
+}
+
+function checkOneWordBack(str){
+	 var backwards = [];
+	    for(var i = str.length - 1; i >= 0; i--){
+	        backwards.push(str[i]);
+	    }
+	    backwards = backwards.join("");
+	    if(backwards === str){
+	        return true;
+	    }
+	    	return false;
+}
+
+function palindrome(str){
+	str = str.replace(/\s+/g, "").toLowerCase();
+	console.log(str);
+	var second_string = str.split("").reverse().join("");
+	console.log(second_string);
+	return (str === second_string) ? true : false;
+}
+
+palindrome("eye");
+palindrome("never odd or even");
+palindrome("eye eye tiger");
+
+var arithmetic = [5, 10, 15, 20];
+var geometric = [2, 6, 18, 54];
+var numbers = [1, 2, 3, 5];
+
+function arithGeo(arr){
+	var geo = true;
+	var arith = true;
+	var difference = arr[1] - arr[0];
+	var ratio = arr[1] / arr[0];
+	for(var i = 2; i < arr.length; i++){
+		if((arr[i] - arr[i - 1]) !== difference){
+			arith = false;
+		}
+	}
+	if(arith === true){
+		console.log("Arithmetic");
+	}
+	else {
+		for(var j = 2; j < arr.length; j++){
+			if((arr[j] / arr[j - 1]) !== ratio){
+				geo = false;
+			}
+		}
+		if(geo === true){
+			console.log("Geometric");
+		} else {
+			console.log(-1);
+		}
+	}
+
+}
+arithGeo(geometric);
+arithGeo(arithmetic);
+arithGeo(numbers);
+
+
+
+
+
