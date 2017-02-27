@@ -18,47 +18,18 @@ function twoSumSimple(arr, Sum){
 
 twoSumSimple([3, 5, 2, -4, 8, 11], 7);
 
-// function twoSum(arr, S) {
-
-//   var sums = [];
-//   var hashTable = {};
-
-//   // check each element in array
-//   for (var i = 0; i < arr.length; i++) {
- 
-//     // calculate S - current element
-//     var sumMinusElement = S - arr[i];
-
-//     // check if this number exists in hash table
-//     // if so then we found a pair of numbers that sum to S
-//     if (hashTable[sumMinusElement.toString()] !== undefined) { 
-//       sums.push([arr[i], sumMinusElement]);
-//     }
-
-//     // add the current number to the hash table
-//     hashTable[arr[i].toString()] = arr[i];
-
-//   }
-
-//   // return all pairs of integers that sum to S
-//   console.log(sums);
-
-// }
-
-
 function twoSum(array, S){
 	var sums = [];
 	var hashTable = {};
 
 	for (var i = 0; i < array.length; i++){
 		var minusElement = S - array[i];
-		// if(array.indexOf(minusElement, array[0])){
-		// 	sums.push(minusElement, array[i]);
-		// 	console.log(sums);
-		// }
+		console.log(hashTable[minusElement.toString()]);
 		if(hashTable[minusElement.toString()] !== undefined){
 			sums.push([array[i], minusElement]);
+			//console.log(sums);
 		}
+		//add current number to hash table
 		hashTable[array[i].toString()] = array[i];
 	}
 	console.log(sums);
