@@ -127,13 +127,18 @@ function letterSimilarCount(str){
     		var thisChar = thisWord[c];
     		table[thisWord][thisChar] === undefined ? table[thisWord][thisChar] = 1 : table[thisWord][thisChar] += 1;
 
-    		if(table[thisWord][thisChar] > table[thisWord]["highest"])
+    		if(table[thisWord][thisChar] > table[thisWord]["highest"]){
+    			table[thisWord]["highest"] = table[thisWord][thisChar];
+    		}
     	}
 	}
+
 
 }
 
 letterSimilarCount(letterCount);
+
+
 
 
 
