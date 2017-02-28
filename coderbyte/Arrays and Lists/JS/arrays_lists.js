@@ -38,7 +38,32 @@ function twoSum(array, S){
 
 twoSum([3, 5, 2, -4, 8, 11], 7);
 
+// input set = [1, 2, 3]
+// power set = [[], [1], [2], [3], [1, 2], [2, 3], [1, 3] [1, 2, 3]]
 
+// The power set contains every possible combination of numbers. It also includes the empty set which contains no numbers from the original set.
+function powerSet(arr){
+	var powers = [];
+	var total = Math.pow(2, arr.length);
+	for(var i = 0; i < total; i++){
+		var tempSet = [];
+		var number = i.toString(2);
+		//console.log(number);
+		while(number.length < arr.length){
+			number = "0" + number;
+		}
+		console.log(number);
+		for(var b = 0; b < number.length; b++){
+			if(number[b] === "1"){
+				//console.log(arr[b]);
+				tempSet.push(arr[b]);
+			}
+		}
+		powers.push(tempSet);
+	}
+	console.log(powers);
+}
+powerSet([1,2,3]);
 
 
 
