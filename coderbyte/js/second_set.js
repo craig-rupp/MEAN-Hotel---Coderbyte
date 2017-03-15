@@ -104,39 +104,94 @@ arithGeo(geometric);
 arithGeo(arithmetic);
 arithGeo(numbers);
 
-var letterCount = "Today, is the greatest day ever";
+// Array Addition
+// Using the JavaScript language, have the function ArrayAdditionI(arr) take the array of numbers stored in arr
+// and return the string true if any combination of numbers in the array can be added up to equal the largest
+// number in the array, otherwise return the string false. 
+// For example: if arr contains [4, 6, 23, 10, 1, 3] the output should return true because 4 + 6 + 10 + 3 = 23. 
+// The array will not be empty, will not contain all the same elements, and may contain negative numbers. 
 
-function letterSimilarCount(str){
-	//array of words
-	var words = str.toLowerCase().split(" ");
 
-	//table object will contain each word with a key and value pair 
-	//e.g. {hello: {h: 1, e: 1, l: 2, o: 1}}
-	var table = {};
 
-	for(var i = 0; i < words.length; i++){
-		//grab each words put in object
-		var thisWord = words[i];
-		table[thisWord] = {};
+var falseCheck = [1,2,3,100];
+var trueCheck = [3,5,-1,8,12];
 
-		// create a key/value pair that will store
-    	// the highest letter count for each word
-    	table[thisWord]["highest"] = 0;
-
-    	for(var c = 0; c < words[i].length; c++){
-    		var thisChar = thisWord[c];
-    		table[thisWord][thisChar] === undefined ? table[thisWord][thisChar] = 1 : table[thisWord][thisChar] += 1;
-
-    		if(table[thisWord][thisChar] > table[thisWord]["highest"]){
-    			table[thisWord]["highest"] = table[thisWord][thisChar];
-    		}
-    	}
+function arrayAdd1(arr){
+	arr.sort(function(a, b){
+		return a - b;
+	});
+	console.log(arr);
+	var topNumber = arr.pop();
+	console.log(topNumber);
+	function recursion(target, array){
+		if(array.length === 0){
+			return target === 0;
+		}
+		var n = array[0];
+		array = array.slice(1);
+		return recursion(target, array) || recursion(target - n, array);
 	}
-
-
+	return recursion(topNumber, arr);
 }
+//arrayAdd1(falseCheck);
 
-letterSimilarCount(letterCount);
+function arrayAddLoop(arr){
+	arr.sort(function(a, b){
+		return a - b;
+	});
+	var maxNumber = arr.pop();
+	var total = 0;
+
+	for(var i = 0; i < arr.length; i++){
+		total += arr[i];
+		console.log(arr[i] + " first loop");
+		for(var j = 0; j < arr.length; j++){
+			if(i != j){
+				console.log(arr[j] + " which is not the same as array i " + arr[i]);
+				total += arr[j];
+				console.log(total + " running total");
+				if(total === maxNumber){
+					console.log(total, maxNumber);
+					return true;
+				}
+			}
+		}
+	}
+}
+arrayAddLoop(falseCheck);
+// var letterCount = "Today, is the greatest day ever";
+
+// function letterSimilarCount(str){
+// 	//array of words
+// 	var words = str.toLowerCase().split(" ");
+
+// 	//table object will contain each word with a key and value pair 
+// 	//e.g. {hello: {h: 1, e: 1, l: 2, o: 1}}
+// 	var table = {};
+
+// 	for(var i = 0; i < words.length; i++){
+// 		//grab each words put in object
+// 		var thisWord = words[i];
+// 		table[thisWord] = {};
+
+// 		// create a key/value pair that will store
+//     	// the highest letter count for each word
+//     	table[thisWord]["highest"] = 0;
+
+//     	for(var c = 0; c < words[i].length; c++){
+//     		var thisChar = thisWord[c];
+//     		table[thisWord][thisChar] === undefined ? table[thisWord][thisChar] = 1 : table[thisWord][thisChar] += 1;
+
+//     		if(table[thisWord][thisChar] > table[thisWord]["highest"]){
+//     			table[thisWord]["highest"] = table[thisWord][thisChar];
+//     		}
+//     	}
+// 	}
+
+
+// }
+
+// letterSimilarCount(letterCount);
 
 
 

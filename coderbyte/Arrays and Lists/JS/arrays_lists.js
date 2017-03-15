@@ -65,6 +65,38 @@ function powerSet(arr){
 }
 powerSet([1,2,3]);
 
+function patterns(str, all){
+	if(str.length === 0){
+		return all;
+	}
+	//if character is 0 or 1 then add the character to each string set we currently have so far
+	console.log(all.length);
+	if(str[0] === '1' || str[0] === '0'){
+		for(var i = 0; i < all.length; i++){
+			all[i].push(str[i]);
+		}
+	}
+	console.log(all);
+	// for a wildcard, we make a copy of each string set
+  	// and for half of them we append a 0 to the string 
+  	// and for the other half we append a 1 to the string
+  	if(str[0] === '?'){
+  		var len = all.length;
+  		for(var j = 0; j < len; j++){
+  			var temp = all[j].slice(0);
+  			all.push(temp);
+
+  		}
+  		for(var k = 0; k < all.length; k++){
+  			(k < all.length/2) ? all[k].push('0') : all[k].push('1');
+  		}
+  	}
+  	console.log(patterns(str.substring(1), all));
+}
+
+//patterns('10?1?', [[]]);
+patterns('?0?1?', [[]]);
+
 
 
 
