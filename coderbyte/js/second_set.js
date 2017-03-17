@@ -133,7 +133,7 @@ function arrayAdd1(arr){
 	}
 	return recursion(topNumber, arr);
 }
-//arrayAdd1(falseCheck);
+arrayAdd1(falseCheck);
 
 function arrayAddLoop(arr){
 	arr.sort(function(a, b){
@@ -147,7 +147,7 @@ function arrayAddLoop(arr){
 		console.log(arr[i] + " first loop");
 		for(var j = 0; j < arr.length; j++){
 			if(i != j){
-				console.log(arr[j] + " which is not the same as array i " + arr[i]);
+				console.log(j + " which is not the same as array i " + i);
 				total += arr[j];
 				console.log(total + " running total");
 				if(total === maxNumber){
@@ -156,9 +156,20 @@ function arrayAddLoop(arr){
 				}
 			}
 		}
+		for(var k = 0; k < arr.length; k++){
+			if(i != k){
+				total -= arr[k];
+				console.log(total + " total after k for loop");
+				if(total == maxNumber){
+					return true;
+				}
+			}
+		}
+		total = 0;
 	}
+	return false;
 }
-arrayAddLoop(falseCheck);
+//arrayAddLoop(falseCheck);
 // var letterCount = "Today, is the greatest day ever";
 
 // function letterSimilarCount(str){
