@@ -169,7 +169,7 @@ function arrayAddLoop(arr){
 	}
 	return false;
 }
-//arrayAddLoop(falseCheck);
+arrayAddLoop(falseCheck);
 // var letterCount = "Today, is the greatest day ever";
 
 // function letterSimilarCount(str){
