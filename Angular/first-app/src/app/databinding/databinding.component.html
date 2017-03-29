@@ -1,0 +1,16 @@
+<h1>String Interpolation</h1>
+<p>
+	{{stringInterpolation}} <strong>{{numberInterpolation}}</strong>
+</p>
+<hr>
+<h1>Property Binding</h1>
+<input type="text" value="{{stringInterpolation}}"> <hr>
+<input type="text" [value]="stringInterpolation">
+<p [ngClass]="{redBorder : onTest()}">Is this styled? It is now, css class added in databinding</p>
+<hr>
+<p [ngStyle]="{color: 'blue'}">This text should be blue</p><hr>
+<h3>Custom Property Binding</h3>
+<fa-property-binding [result]="10"></fa-property-binding><hr>
+<h3>Event Property Binding</h3>
+<fa-event-binding></fa-event-binding>
+
