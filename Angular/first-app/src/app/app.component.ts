@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import {LifecycleComponent} from './lifecycle.component'
+
 @Component({
   selector: 'app-root',
   template: `

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PropertyBindingComponent} from './property-binding.component';
 import { EventBindingComponent} from './event-binding.component';
+import { TwoWayBindingComponent} from './two-way-binding.component';
 
 
 
@@ -20,6 +21,9 @@ export class DatabindingComponent implements OnInit {
   }
   onTest(){
   	return true;
+  }
+  onClick(value : string){
+  	alert(value);
   }
   stringInterpolation = "This is lit";
   numberInterpolation = 59;

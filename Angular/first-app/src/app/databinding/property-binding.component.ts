@@ -8,11 +8,6 @@ import { Component, Input } from '@angular/core';
   styles: []
 })
 export class PropertyBindingComponent {
-
-  // constructor() { }
-
-  // ngOnInit() {
-  // }
   @Input() result : number = 0;
 
 }
