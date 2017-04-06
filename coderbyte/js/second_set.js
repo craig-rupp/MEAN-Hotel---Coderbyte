@@ -179,15 +179,46 @@ function LetterCount(string){
 	//e.g. {hello : {h : 1, e : 1, l : 2, o : 1 }}
 	var table = {};
 
+	//loop through each word
 	for(var i = 0; i < words.length; i++){
 		var this_word = words[i];
 		table[this_word] = {};
+		console.log(table);
+
+		//key/value pair, will store highest letter count for each word
+		table[this_word]["highest"] = 0;
+		//loop through each character in word, store number of time each letter appears
+		for(var c = 0; c < words[i].length; c++){
+			//see if character exists in table
+			var thisChar = this_word[c];
+			console.log(thisChar);
+			table[this_word][thisChar] === undefined ? table[this_word][thisChar] = 1 :
+			table[this_word][thisChar] += 1;
+
+			if(table[this_word][thisChar] > table[this_word]["highest"]){
+				table[this_word]["highest"] = table[this_word][thisChar];	
+			}
+		}
+
 
 	}
-	console.log(table);
+
+	var answer = {word : null, count : 1};
+	// now determine what word has the highest number of repeating letters by accessing the "highest"
+  	// property of each word in the table
+
+  	for (var w in table) {
+    if (table[w]["highest"] > answer["count"]) {
+      answer["count"] = table[w]["highest"];
+      answer["word"] = w;
+      console.log(answer["word"]);
+    }
+  }
+  console.log((answer["count"] === 1) ? -1 : answer["word"] );
+	
 }
 
-LetterCount("world hello from coderbyte");
+LetterCount("world hello from coderbytee");
 
 
 
