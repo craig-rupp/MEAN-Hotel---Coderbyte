@@ -170,39 +170,24 @@ function arrayAddLoop(arr){
 	return false;
 }
 arrayAddLoop(falseCheck);
-// var letterCount = "Today, is the greatest day ever";
-
-// function letterSimilarCount(str){
-// 	//array of words
-// 	var words = str.toLowerCase().split(" ");
-
-// 	//table object will contain each word with a key and value pair 
-// 	//e.g. {hello: {h: 1, e: 1, l: 2, o: 1}}
-// 	var table = {};
-
-// 	for(var i = 0; i < words.length; i++){
-// 		//grab each words put in object
-// 		var thisWord = words[i];
-// 		table[thisWord] = {};
-
-// 		// create a key/value pair that will store
-//     	// the highest letter count for each word
-//     	table[thisWord]["highest"] = 0;
-
-//     	for(var c = 0; c < words[i].length; c++){
-//     		var thisChar = thisWord[c];
-//     		table[thisWord][thisChar] === undefined ? table[thisWord][thisChar] = 1 : table[thisWord][thisChar] += 1;
-
-//     		if(table[thisWord][thisChar] > table[thisWord]["highest"]){
-//     			table[thisWord]["highest"] = table[thisWord][thisChar];
-//     		}
-//     	}
-// 	}
 
 
-// }
+function LetterCount(string){
+	var words = string.split(" ");
+	console.log(words);
+	//build table object so each word with a key & value pair, characters are key : value (how many times they've occurred)
+	//e.g. {hello : {h : 1, e : 1, l : 2, o : 1 }}
+	var table = {};
 
-// letterSimilarCount(letterCount);
+	for(var i = 0; i < words.length; i++){
+		var this_word = words[i];
+		table[this_word] = {};
+
+	}
+	console.log(table);
+}
+
+LetterCount("world hello from coderbyte");
 
 
 
