@@ -196,7 +196,7 @@ function LetterCount(string){
 			table[this_word][thisChar] += 1;
 
 			if(table[this_word][thisChar] > table[this_word]["highest"]){
-				table[this_word]["highest"] = table[this_word][thisChar];	
+				table[this_word]["highest"] =	 table[this_word][thisChar];	
 			}
 		}
 
