@@ -220,6 +220,22 @@ function LetterCount(string){
 
 LetterCount("world hello from coderbytee");
 
+function anotherLetterCount(string){
+	var words = string.split(' ');
+	var maxCount = 0;
+	for(var i = 0; i < words.length; i++){
+		var a_match = words[i].match(/(a-z)(?=.*1)/ig);
+		if(a_match !== null){
+			if(a_match.length > maxCount){
+				maxCount = a_match.length;
+				var maxWord = words[i];
+			}
+		}
+	}
+	return maxWord;a
+	console.log(maxWord || -1);
+}
+
 
 
 
