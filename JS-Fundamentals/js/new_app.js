@@ -26,12 +26,30 @@ function wave(string){
 
 wave('Craig');
 
-function my_dawg(string){
-	console.log(`That\'s my favorite {string} ` + string );
+function fundamental(){
+	var myVar;
+	console.log(myVar);
 }
-function what_name(){
-	my_dawg(Shali);
+function test(){
+	var myVar = 3;
+	console.log(myVar);
+	fundamental();
 }
-var Shali = 'Shali';
-what_name();
+var myVar = 35;
+console.log(myVar);
+test();
+console.log(myVar);
+
+//scope for variable globalvar
+function second_invoke(){
+	console.log(globalvar);
+}
+function first_invoke(){
+	var globalvar = 3 + " first_invoke function call";
+	second_invoke();
+}
+var globalvar = 24 + " for my man Kobe Bryant";
+first_invoke();
+//execution stack (global context globalvar = 24 + " for my man KB", first_invoke (variable changes), scope for second_invoke looks at global level for variable reference)
+
 
