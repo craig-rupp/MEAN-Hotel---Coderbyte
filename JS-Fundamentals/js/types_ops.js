@@ -21,4 +21,6 @@ console.log(ab);
 console.log(ba);
 console.log(ac);
 
+// ba = ac ()
+
 //assignment associativity is right to left
