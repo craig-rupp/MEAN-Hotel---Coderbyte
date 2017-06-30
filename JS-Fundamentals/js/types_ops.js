@@ -24,3 +24,9 @@ console.log(ac);
 // ba = ac ()
 
 //assignment associativity is right to left
+
+function greeting(name){
+	name = name || '<Your Name Here>';
+	console.log('Hello there ' + name);
+}
+greeting();
