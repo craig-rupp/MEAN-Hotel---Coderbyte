@@ -20,4 +20,3 @@ person.address = {
 		}
 	}
 };
-console.log(person.address.sports_teams.football());
