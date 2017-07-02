@@ -16,7 +16,7 @@ person.address = {
 		Basketball : 'Gonzaga Bulldogs',
 		Soccer : 'Seattle Sounders',
 		football : function(){
-			return ('The Seahawks were the squad');
+			return 'The Seahawks were the squad';
 		}
 	}
 };
@@ -67,5 +67,42 @@ function language_greetings(object1, object2){
 }
 language_greetings(english_greetings, spanish_greetings);
 
-//container object to keep greetings objects separate within language greetings
+//container object to keep greetings objects separate within language greetings (faking namespaces)
+
+var objectLiteral = {
+	name : 'Craig Rupp',
+	isAGonner: true
+};
+console.log(JSON.stringify(objectLiteral));
+
+var jsonValue = JSON.parse('{ "name" : "Mesut Ozil", "position" : "Creator - No.10"}');
+
+console.log(jsonValue);
+
+function log(variable){
+	console.log(variable);
+}
+
+log({
+	skill : "Drink and know things"
+});
+log(function(){
+	console.log("Logging a function the dynamic variable");
+});
+
+function pass(a){
+	a();
+}
+
+pass(function(){
+	console.log("Logging a function within a function");
+});
+
+
+
+
+
+
+
+
 

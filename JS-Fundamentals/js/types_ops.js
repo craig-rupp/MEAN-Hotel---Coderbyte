@@ -30,3 +30,9 @@ function greeting(name){
 	console.log('Hello there ' + name);
 }
 greeting();
+
+var objectLiteral = {
+	name : 'Craig Rupp',
+	isAGonner: true
+};
+console.log(objectLiteral);
