@@ -98,6 +98,44 @@ pass(function(){
 	console.log("Logging a function within a function");
 });
 
+//by value (primitives)
+var a = 3;
+var b;
+
+b = a;
+
+a = 2;
+console.log(a + ",", b);
+
+// by reference (all objects(including functions)) - when pointing by reference all variables
+//pointing to type (like object below) will have all propertires updates if any property is mutated
+var cr = {
+	club : 'Arsenal'
+};
+
+var dr;
+dr = cr;
+
+cr.club = 'Sounders too'; //mutate
+console.log(dr.club);
+
+console.log(cr.club);
+
+//by ref, as parameters
+function changeAllegiance(obj){
+	obj.club = "Schalke";
+}
+console.log(dr); //before function call
+changeAllegiance(dr);
+console.log(dr);
+console.log(cr);
+
+//equal operator sets up new memory space
+cr = {club : 'Always Arsenal'};
+console.log(cr);
+console.log(dr);
+
+
 
 
 
