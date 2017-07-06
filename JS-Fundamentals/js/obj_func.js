@@ -159,7 +159,7 @@ var object_literal = {
 		set_name('Update Name property on Object Literal');
 		console.log(this);
 	}
-	//this becomes the object that contains you
+	//this becomes the object that contains it
 };
 object_literal.log();
 
