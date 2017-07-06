@@ -136,6 +136,33 @@ console.log(cr);
 console.log(dr);
 
 
+//this 
+console.log(this);
+
+function a_this(){
+	console.log(this);
+	this.newVariabile = 'hello';
+}
+a_this();
+console.log(newVariabile);
+
+var object_literal = {
+	name : 'The c object',
+	log : function(){
+		console.log(this.name + ', Original name property on object');
+		var self_level = this;
+		self_level.name = 'Craig\'s  object';
+		var set_name = function(new_name){
+			self_level.name = new_name;
+			//this would point to global object, this is weird (unless declaring this with a variable like self_level)
+		};
+		set_name('Update Name property on Object Literal');
+		console.log(this);
+	}
+	//this becomes the object that contains you
+};
+object_literal.log();
+
 
 
 
