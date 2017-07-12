@@ -145,6 +145,56 @@ iife_invoked_closure[2]();
 iife_invoked_closure[3]();
 iife_invoked_closure[4]();
 
+function chooseStart(team){
+	return function(first, last){
+		if(team == 'Lakers'){
+			console.log(first + ' ' + last + ', plays for the ' + team);
+		}
+		if(team == 'Cavs'){
+			console.log(first + ' ' + last + ', plays for the ' + team);
+		}
+	};
+}
+
+var Kobe_Bean = chooseStart('Lakers'); //Kobe_Bean will now hold the team 'Lakers' in a closure after execution context has run on first chooseStart call
+var King_James = chooseStart('Cavs'); //King_Jame will now hold the team 'Cavs' in a closure 
+
+Kobe_Bean('Kobe', 'Bryant');
+King_James('LeBron', 'James');
+
+
+var first_array = [27, 28, 31, 97, 64, 79];
+var second_array = [45, 88, 97, 27, 31, 45, 24];
+
+var matching_numbers = [];
+var first_array_diff = [];
+var second_array_diff = [];
+//see if values match in array
+first_array.forEach(function(element, index){
+	console.log(element + ', ' + index);
+	if(second_array.indexOf(first_array[index]) > -1 ){
+		matching_numbers.push(first_array[index]);
+		console.log(first_array[index] + ' found in second array');
+		console.log(matching_numbers);
+	} else {
+		console.log('No matching index found in Second Array for : ' + first_array[index]);
+		first_array_diff.push(first_array[index]);
+		//console.log(first_array[index]);
+		console.log(first_array_diff);
+	}
+	//if(second_array.indexOf())
+});
+console.log('Checking Second Array With Loop');
+for(var a = 0; a < second_array.length; a++){
+	if(first_array.indexOf(second_array[a]) > -1 ){
+		continue;
+	} else {
+		console.log('No matching index found in First Array for : ' + second_array[a]);
+		second_array_diff.push(second_array[a]);
+		console.log(second_array_diff);
+	}
+}
+
 
 
 
