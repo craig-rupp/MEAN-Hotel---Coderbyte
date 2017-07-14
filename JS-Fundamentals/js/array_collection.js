@@ -217,15 +217,38 @@ var arsenal_Front3 = {
 	}
 };
 
-var logArsenal = function(legend){
-	console.log(this.combined_3() + (legend ? legend : 'No legend provided'));
+var logArsenal = function(legend, manager){
+	console.log(this.combined_3() + (legend ? legend + ", manged by :  ": 'No legend provided, who was managed by :: ') + (manager ? manager : ' he managed himself what are we kidding'));
 	console.log('Invoking function differently');
 };
 
+//bind only creates copy, then needs to be invoked
 var logArsenalBind = logArsenal.bind(arsenal_Front3);
 logArsenalBind();
 
+//call just looks for 'this' (first argument) in this example the arsenal_Front3 object
 logArsenal.call(arsenal_Front3, 'Thierry Henry');
+
+//apply
+logArsenal.apply(arsenal_Front3, ['Thierry Henry', 'Arsene Wenger']);
+
+//function borrowing
+
+var arsenal_midfield3 = {
+	left_wing : 'Alex Iwobi',
+	right_wing : 'Theo Walcott',
+	striker : 'Olivier Giroud'
+};
+
+console.log(arsenal_Front3.combined_3.apply(arsenal_midfield3));
+
+//function currying
+function multiply(a, b){
+	return a * b;
+}
+var multipleByTwo = 
+
+
 
 
 
