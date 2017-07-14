@@ -195,6 +195,38 @@ for(var a = 0; a < second_array.length; a++){
 	}
 }
 
+function waitForIt(){
+	var pause = 'Wait for It';
+	console.log(pause);
+	var there = 'there it is';
+	setTimeout(function(){
+		alert(there);
+	}, 2500);
+}
+//waitForIt();
+
+//call, apply, bind
+
+var arsenal_Front3 = {
+	left_wing : 'Alexis Sanchez',
+	right_wing : 'Mesut Ozil',
+	striker : 'Alexandre Lacazette',
+	combined_3 : function(){
+	var attack_force = 'Arsenal\'s front three consists of ' + this.left_wing + ' & ' + this.right_wing + ' on the flanks and ' + this.striker + ' leading the line. ';
+	return attack_force;
+	}
+};
+
+var logArsenal = function(legend){
+	console.log(this.combined_3() + (legend ? legend : 'No legend provided'));
+	console.log('Invoking function differently');
+};
+
+var logArsenalBind = logArsenal.bind(arsenal_Front3);
+logArsenalBind();
+
+logArsenal.call(arsenal_Front3, 'Thierry Henry');
+
 
 
 
